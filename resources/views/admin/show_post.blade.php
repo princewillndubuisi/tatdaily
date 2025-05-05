@@ -73,7 +73,7 @@
                                         @if (Str::startsWith($post->image, 'http'))
                                             <img src="{{ $post->image }}" alt="Image" width="100">
                                         @else
-                                            <p>No image</p>
+                                            <p>No Image</p>
                                         @endif
                                     </td>
 
