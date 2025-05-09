@@ -335,6 +335,7 @@
         <div x-data="{ query: '' }" id="mobile-menu" class="sm:hidden hidden px-4 pb-4 w-11/12 mx-auto ">
             <ul class="flex flex-col gap-4 font-semibold text-xl text-slate-700">
                 {{-- Mobile Search --}}
+                
                 <div
                     class="flex items-center gap-2 transition-all duration-300"
 

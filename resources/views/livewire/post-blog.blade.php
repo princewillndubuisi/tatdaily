@@ -50,7 +50,7 @@
                                 {{$posts->title}}
                             </h1>
                         </div>
-                        <p class="text-[14px] font-medium sm:text-base md:text-lg text-gray-500 tracking-wide leading-relaxed sm:ml-0 transition-all duration-300 ease-in-out hover:text-gray-400">
+                        <p class="text-[14px] font-medium sm:text-base md:text-lg  text-gray-500 tracking-wide leading-relaxed sm:ml-0 transition-all duration-300 ease-in-out hover:text-gray-400">
                             {{$posts->description}}
                         </p>
                     </a>
