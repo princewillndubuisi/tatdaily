@@ -225,7 +225,7 @@
 </head>
 <body class="font-sans">
     {{-- Start Header section --}}
-    <header id="page-top" class="bg-white z-50 sm:relative">
+    <header id="page-top" class="bg-white z-50 fixed top-0 left-0 right-0  sm:relative">
         {{-- Start nav section --}}
         <nav class="w-11/12 mx-auto h-auto sm:h-40 sm:border-b-2 sm:border-black sm:mt-2">
 
@@ -296,7 +296,7 @@
                     </button>
 
                     {{-- Mobile Menu --}}
-                    <div x-data="{ query: '' }"  id="mobile-menu" class="sm:hidden hidden z-50 px-4 py-4 absolute top-16 w-[335px]  rounded-md bg-white">
+                    <div x-data="{ query: '' }" id="mobile-menu" class="sm:hidden hidden z-50 px-4 py-4 fixed left-0 right-0 w-full rounded-md bg-white" style="top: 100px;">
                         <ul class="flex flex-col gap-4 font-semibold text-xl text-slate-700">
                             {{-- Mobile Search --}}
                             
