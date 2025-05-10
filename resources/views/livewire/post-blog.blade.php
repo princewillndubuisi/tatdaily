@@ -38,7 +38,7 @@
                             </div>
 
                             <div class="mb-4 mt-3 sm:mt-1">
-                            <a class="w-[94px] h-[20px] px-4 py-[0.5px] font-medium text-[12px] border border-sky-100 rounded-full sm:py-[3px] sm:w-[113px] sm:h-[20px] sm:px-4 sm:font-medium sm:text-[12px] bg-sky-200" href="{{ route('category.post', $posts->category->id) }}"">{{$posts->category->title}}</a>
+                                <a class="w-[94px] h-[20px] px-4 py-[0.5px] font-medium text-[12px] border border-sky-100 rounded-full sm:py-[3px] sm:w-[113px] sm:h-[20px] sm:px-4 sm:font-medium sm:text-[12px] bg-sky-200" href="{{ route('category.post', $posts->category->id) }}"">{{$posts->category->title}}</a>
                             </div>
                         </div>
                     </div>
