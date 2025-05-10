@@ -296,8 +296,8 @@
                     </button>
 
                     {{-- Mobile Menu --}}
-                    <div x-data="{ query: '' }"  id="mobile-menu" class="sm:hidden hidden z-50 px-4 py-4 fixed top-32 left-0 right-0 w-full rounded-md bg-white">
-                        <ul class="flex flex-col gap-4 font-semibold text-xl border border-yellow-500 text-slate-700">
+                    <div x-data="{ query: '' }"  id="mobile-menu" class="sm:hidden hidden z-50 px-4 py-4 fixed top-52 left-0 right-0 w-full rounded-md bg-white">
+                        <ul class="flex flex-col gap-4 font-semibold text-xl text-slate-700">
                             {{-- Mobile Search --}}
                             
                             <div
