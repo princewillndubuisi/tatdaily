@@ -225,7 +225,7 @@
 </head>
 <body class="font-sans">
     {{-- Start Header section --}}
-    <header id="page-top" class="bg-white">
+    <header id="page-top" class="bg-white z-50 fixed top-0 left-0 right-0 sm:static">
         {{-- Start nav section --}}
         <nav class="w-11/12 mx-auto h-auto sm:h-40 sm:border-b-2 sm:border-black sm:mt-2">
 
@@ -295,6 +295,37 @@
                         </svg>
                     </button>
 
+                    {{-- Mobile Menu --}}
+                    <div x-data="{ query: '' }" id="mobile-menu" class="sm:hidden hidden z-50 px-4 py-4 absolute top-20 w-[335px]  rounded-md bg-white">
+                        <ul class="flex flex-col gap-4 font-semibold text-xl text-slate-700">
+                            {{-- Mobile Search --}}
+                            
+                            <div
+                                class="flex items-center gap-2 transition-all duration-300"
+
+                            >
+                                <input
+                                    x-model="query"
+                                    type="text"
+                                    class="border px-4 py-3 text-xl rounded w-48 focus:outline-none focus:ring-1 focus:ring-gray-400"
+                                    placeholder="Search..."
+                                >
+                                <button
+                                    class="border px-4 py-3 text-xl rounded bg-gray-400 border-gray-400 text-white"
+                                    x-on:click="$dispatch('search', { search: query })"
+                                >
+                                    GO
+                                </button>
+                            </div>
+
+                            <li><a href="{{ url('/') }}" class="text-2xl block hover:text-indigo-600">Home</a></li>
+                            <li><a href="{{ route('career') }}" class="text-2xl block hover:text-indigo-600">Career</a></li>
+                            <li><a href="#" class="text-2xl block hover:text-indigo-600">About Us</a></li>
+
+
+                        </ul>
+                    </div>
+
                     <div class="flex items-center gap-4 sm:hidden">
                         @auth
                             <x-app-layout />
@@ -331,36 +362,6 @@
 
         <hr class="hidden sm:block sm:mt-[0.5px] sm:w-11/12 sm:mx-auto sm:border-black sm:border-t-2">
 
-        {{-- Mobile Menu --}}
-        <div x-data="{ query: '' }" id="mobile-menu" class="sm:hidden hidden px-4 pb-4 w-11/12 mx-auto ">
-            <ul class="flex flex-col gap-4 font-semibold text-xl text-slate-700">
-                {{-- Mobile Search --}}
-                
-                <div
-                    class="flex items-center gap-2 transition-all duration-300"
-
-                >
-                    <input
-                        x-model="query"
-                        type="text"
-                        class="border px-4 py-3 text-xl rounded w-48 focus:outline-none focus:ring-1 focus:ring-gray-400"
-                        placeholder="Search..."
-                    >
-                    <button
-                        class="border px-4 py-3 text-xl rounded bg-gray-400 border-gray-400 text-white"
-                        x-on:click="$dispatch('search', { search: query })"
-                    >
-                        GO
-                    </button>
-                </div>
-
-                <li><a href="{{ url('/') }}" class="text-2xl block hover:text-indigo-600">Home</a></li>
-                <li><a href="{{ route('career') }}" class="text-2xl block hover:text-indigo-600">Career</a></li>
-                <li><a href="#" class="text-2xl block hover:text-indigo-600">About Us</a></li>
-
-
-            </ul>
-        </div>
         {{-- End nav section --}}
     </header>
 
