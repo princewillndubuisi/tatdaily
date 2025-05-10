@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    <section class="text-gray-600 body-font overflow-hidden">
+    <section class="text-gray-600 pt-52 body-font overflow-hidden sm:pt-0">
         <div class="container px-5 py-24 mx-auto">
             <div class="mb-12">
                 <h2 class="text-2xl font-medium text-gray-900 title-font">

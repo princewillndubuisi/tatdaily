@@ -225,7 +225,7 @@
 </head>
 <body class="font-sans">
     {{-- Start Header section --}}
-    <header id="page-top" class="bg-white z-50 fixed top-0 left-0 right-0 sm:static">
+    <header id="page-top" class="bg-white z-50 fixed top-0 left-0 right-0  sm:relative">
         {{-- Start nav section --}}
         <nav class="w-11/12 mx-auto h-auto sm:h-40 sm:border-b-2 sm:border-black sm:mt-2">
 
@@ -344,9 +344,9 @@
                     </div>
                 </div>
                 <!-- Heading -->
-                <h1 class="text-[25px] my-8 text-center font-medium text-black font-cheltenham">
+                <a href="{{ url('/') }}" class="text-[25px] my-8 flex justify-center font-medium text-black font-cheltenham">
                     THE ACADEMIC TIMES
-                </h1>
+                </a>
             </div>
 
 

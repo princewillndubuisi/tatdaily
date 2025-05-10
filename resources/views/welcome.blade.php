@@ -6,7 +6,7 @@
 
 @section('content')
     {{-- Start main section --}}
-    <main class="bg-prince h-full mt-10 sm:mt-0 border border-yellow-500">
+    <main class="bg-prince h-full pt-52 sm:pt-0">
         {{-- <div class="my-2 h-12 flex justify-center items-center">
             <div class="w-11/12 mx-auto flex justify-center items-center">
                 <p class="w-[92px] h-[28px] text-[12px] rounded-xl bg-red-500 flex justify-center items-center text-white sm:w-32 sm:rounded-lg sm:py-1 font-semibold sm:text-xl ">Live News</p>
@@ -23,7 +23,7 @@
         </div> --}}
 
         {{-- Start Trending news section --}}
-        <div class="w-11/12 flex justify-between items-center -mt-4 mx-auto sm:mt-12">
+        <div class="w-11/12 flex justify-between items-center  mx-auto sm:mt-12">
             <div>
                 <h6 class="text-4xl font-medium text-black sm:text-4xl ">Latest News</h6>
             </div>
@@ -135,7 +135,7 @@
         {{--End Trending news section --}}
 
         {{-- Start Your timeline section --}}
-        <div class="w-11/12 mx-auto mt-16 sm:w-11/12 ">
+        <div class="w-11/12 mx-auto mt-16 sm:w-11/12">
             <div>
                 <h6 class="text-4xl font-medium">Your Timeline</h6>
             </div>

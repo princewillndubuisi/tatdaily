@@ -87,7 +87,7 @@
         }
     </style>
 
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="max-w-7xl mx-auto px-4 pt-52 sm:px-6 lg:px-8 sm:py-12">
         <!-- Category Header -->
         <div class="text-center mb-16 animate-fade-in">
             <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
@@ -200,8 +200,8 @@
         </div>
 
         <!-- Pagination -->
-        <div class="mt-16 flex justify-center">
-            {{ $post->onEachSide(1)->links('pagination::tailwind') }}
+        <div class="mt-16">
+            {{ $post->onEachSide(1)->links() }}
         </div>
     </div>
 

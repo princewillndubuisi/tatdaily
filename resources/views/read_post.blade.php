@@ -6,7 +6,7 @@
 
 @section('content')
     {{-- Start Main post section --}}
-    <div class="w-11/12 mx-auto sm:w-11/12 sm:mx-auto mt-10">
+    <div class="w-11/12 mx-auto pt-52 sm:w-11/12 sm:mx-auto sm:pt-10">
         <div class="flex justify-between  gap-10 w-full">
             <div class="w-full sm:w-[65%] sm:h-1080">
                 <div class="">
