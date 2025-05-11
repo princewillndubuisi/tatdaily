@@ -400,14 +400,19 @@
 
 
     {{-- Start Footer section --}}
-    <div class="border bg-black h-24 ">
-        <div class="text-white font-medium text-3xl w-[70%] mx-auto mt-6 gap-4 flex items-center justify-center">
+    <div class="border bg-black h-24 w-full">
+        <div class="w-[90%] mx-auto text-white font-medium text-3xl mt-6 flex items-center justify-between">
             <p>© 2025</p>
-            <a href=""><i class="fa-brands fa-square-facebook"></i></a>
-            <a href=""><i class="fa-brands fa-linkedin-in"></i></a>
-            <a href=""><i class="fa-regular fa-envelope"></i></a>
-            <a href=""><i class="fa-brands fa-whatsapp"></i></a>
-            <a href=""><i class="fa-brands fa-instagram"></i></a>
+            {{-- <a href="{{ url('/') }}" class="text-3xl font-medium text-white font-cheltenham">
+                THE ACADEMIC TIMES
+            </a> --}}
+            <div class="space-x-6">
+                <a href=""><i class="fa-brands fa-square-facebook"></i></a>
+                <a href=""><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href=""><i class="fa-regular fa-envelope"></i></a>
+                <a href=""><i class="fa-brands fa-whatsapp"></i></a>
+                <a href=""><i class="fa-brands fa-instagram"></i></a>
+            </div>
         </div>
     </div>
     {{-- End Footer section --}}
