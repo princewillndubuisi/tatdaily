@@ -382,7 +382,7 @@
     @auth
         @if (Auth::user()->usertype == 'user')
                 <!-- Floating Action Button for users -->
-                <div class="fixed bottom-8 right-8 z-10">
+                <div class="fixed bottom-8 right-8 z-50">
                     <a href="{{ route('career.apply') }}" class="w-14 h-14 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 shadow-lg flex items-center justify-center text-white hover:shadow-xl transition-all transform hover:scale-110">
                         <i class="fas fa-plus text-xl"></i>
                     </a>
@@ -390,7 +390,7 @@
 
         @elseif (Auth::user()->usertype == 'editor')
                 <!-- Floating Action Button for editors -->
-                <div class="fixed bottom-8 right-8 z-10">
+                <div class="fixed bottom-8 right-8 z-50">
                     <a href="{{ route('create.post') }}" class="w-14 h-14 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 shadow-lg flex items-center justify-center text-white hover:shadow-xl transition-all transform hover:scale-110">
                         <i class="fas fa-plus text-xl"></i>
                     </a>
@@ -402,10 +402,6 @@
     {{-- Start Footer section --}}
     <div class="border bg-black h-24 w-full">
         <div class="w-[90%] mx-auto text-white font-medium text-3xl mt-6 flex items-center justify-between">
-            <p>© 2025</p>
-            {{-- <a href="{{ url('/') }}" class="text-3xl font-medium text-white font-cheltenham">
-                THE ACADEMIC TIMES
-            </a> --}}
             <div class="space-x-6">
                 <a href=""><i class="fa-brands fa-square-facebook"></i></a>
                 <a href=""><i class="fa-brands fa-linkedin-in"></i></a>
@@ -413,6 +409,10 @@
                 <a href=""><i class="fa-brands fa-whatsapp"></i></a>
                 <a href=""><i class="fa-brands fa-instagram"></i></a>
             </div>
+            <p>© 2025</p>
+            {{-- <a href="{{ url('/') }}" class="text-3xl font-medium text-white font-cheltenham">
+                THE ACADEMIC TIMES
+            </a> --}}
         </div>
     </div>
     {{-- End Footer section --}}

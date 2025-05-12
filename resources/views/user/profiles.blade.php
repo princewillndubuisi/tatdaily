@@ -6,7 +6,7 @@
 
 @section('content')
 
-<div class="md:flex bg-gray-100">
+<div class="md:flex pt-52 bg-gray-100 sm:pt-0">
     @include('user.include.sidebar')
 
     <div class="w-[412px] sm:w-[80%] sm:border sm:border-lucy">
