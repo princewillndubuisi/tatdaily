@@ -76,11 +76,11 @@
                         </div>
 
 
-                        <div id="share-modal-{{ $posts->id }}" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full inset-0 h-[calc(100%-1rem)] max-h-full bg-black bg-opacity-30">
-                            <div class="relative p-4 w-full max-w-md max-h-full">
-                                <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                        <div id="share-modal-{{ $posts->id }}" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full inset-0 h-[calc(100%-1rem)] max-h-full  bg-opacity-30">
+                            <div class="relative p-4 w-full max-w-md max-h-[600px]">
+                                <div class="relative bg-white rounded-lg shadow border border-yellow-500">
                                     <div class="flex justify-between items-center p-4 border-b rounded-t">
-                                        <h3 class="text-sm font-semibold text-gray-900 dark:text-white">Share This Post</h3>
+                                        <h3 class="text-sm font-semibold text-gray-900 dark:text-black">Share This Post</h3>
                                         <button type="button" class="text-gray-400 hover:text-gray-900"
                                                 data-modal-hide="share-modal-{{ $posts->id }}">
                                             <i class="fas fa-times"></i>
@@ -90,24 +90,24 @@
                                         $postUrl = route('read.post', $posts->id);
                                         $postTitle = $posts->title;
                                     @endphp
-                                    <div class="p-4 flex gap-4 justify-center">
+                                    <div class="p-4 flex gap-4 justify-evenly">
                                         <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode($postUrl) }}" target="_blank" title="Facebook">
-                                            <i class="fab fa-facebook-f text-blue-600 text-xl"></i>
+                                            <i class="fab fa-facebook-f text-blue-600 text-2xl"></i>
                                         </a>
                                         <a href="https://twitter.com/intent/tweet?url={{ urlencode($postUrl) }}&text={{ urlencode($postTitle) }}" target="_blank" title="Twitter">
-                                            <i class="fab fa-twitter text-blue-400 text-xl"></i>
+                                            <i class="fab fa-twitter text-blue-400 text-2xl "></i>
                                         </a>
                                         <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ urlencode($postUrl) }}&title={{ urlencode($postTitle) }}" target="_blank" title="LinkedIn">
-                                            <i class="fab fa-linkedin-in text-blue-700 text-xl"></i>
+                                            <i class="fab fa-linkedin-in text-blue-700 text-2xl "></i>
                                         </a>
                                         <a href="https://api.whatsapp.com/send?text={{ urlencode($postTitle . ' ' . $postUrl) }}" target="_blank" title="WhatsApp">
-                                            <i class="fab fa-whatsapp text-green-500 text-xl"></i>
+                                            <i class="fab fa-whatsapp text-green-500 text-2xl "></i>
                                         </a>
                                         <a href="https://t.me/share/url?url={{ urlencode($postUrl) }}&text={{ urlencode($postTitle) }}" target="_blank" title="Telegram">
-                                            <i class="fab fa-telegram-plane text-blue-500 text-xl"></i>
+                                            <i class="fab fa-telegram-plane text-blue-500 text-2xl "></i>
                                         </a>
                                         <a href="https://www.reddit.com/submit?url={{ urlencode($postUrl) }}&title={{ urlencode($postTitle) }}" target="_blank" title="Reddit">
-                                            <i class="fab fa-reddit-alien text-orange-600 text-xl"></i>
+                                            <i class="fab fa-reddit-alien text-orange-600 text-2xl "></i>
                                         </a>
                                     </div>
                                 </div>
@@ -237,30 +237,6 @@
     </div>
 </div>
 
-<script>
-    function openShareModal(url, title) {
-        const modal = document.getElementById('authentication-modals');
-        const shareContainer = document.getElementById('share-buttons');
-        
-        // Build share links dynamically (match the server-generated Share buttons)
-        const encodedUrl = encodeURIComponent(url);
-        const encodedTitle = encodeURIComponent(title);
-
-        shareContainer.innerHTML = `
-            <a href="https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}" target="_blank" class="text-blue-600">Facebook</a><br>
-            <a href="https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}" target="_blank" class="text-blue-400">Twitter</a><br>
-            <a href="https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}" target="_blank" class="text-blue-700">LinkedIn</a><br>
-            <a href="https://api.whatsapp.com/send?text=${encodedTitle}%20${encodedUrl}" target="_blank" class="text-green-500">WhatsApp</a><br>
-        `;
-
-        modal.classList.remove('hidden');
-        modal.classList.add('flex');
-    }
-
-    function closeModal() {
-        document.getElementById('authentication-modals').classList.add('hidden');
-    }
-</script>
 
 
 
