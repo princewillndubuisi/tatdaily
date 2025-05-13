@@ -92,29 +92,25 @@
                                         $postImage = $posts->image ?? null; 
                                     @endphp
                                     
-                                    <meta property="og:title" content="{{ $postTitle }}" />
-                                    <meta property="og:description" content="{{ Str::limit(strip_tags($posts->description), 150) }}" />
-                                    <meta property="og:image" content="{{ $postImage }}" />
-                                    <meta property="og:url" content="{{ $postUrl }}" />
 
                                     <div class="p-4 flex gap-4 justify-evenly">
                                         <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode($postUrl) }}" target="_blank" title="Facebook">
-                                            <i class="fab fa-facebook-f text-blue-600 text-2xl"></i>
+                                            <i class="fab fa-facebook-f text-blue-600 text-3xl sm:text-2xl"></i>
                                         </a>
                                         <a href="https://twitter.com/intent/tweet?url={{ urlencode($postUrl) }}&text={{ urlencode($postTitle) }}" target="_blank" title="Twitter">
-                                            <i class="fab fa-twitter text-blue-400 text-2xl "></i>
+                                            <i class="fab fa-twitter text-blue-400 text-3xl sm:text-2xl "></i>
                                         </a>
                                         <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ urlencode($postUrl) }}&title={{ urlencode($postTitle) }}" target="_blank" title="LinkedIn">
-                                            <i class="fab fa-linkedin-in text-blue-700 text-2xl "></i>
+                                            <i class="fab fa-linkedin-in text-blue-700 text-3xl sm:text-2xl "></i>
                                         </a>
                                         <a href="https://api.whatsapp.com/send?text={{ urlencode($postTitle . ' ' . $postUrl) }}" target="_blank" title="WhatsApp">
-                                            <i class="fab fa-whatsapp text-green-500 text-2xl "></i>
+                                            <i class="fab fa-whatsapp text-green-500 text-3xl sm:text-2xl "></i>
                                         </a>
                                         <a href="https://t.me/share/url?url={{ urlencode($postUrl) }}&text={{ urlencode($postTitle) }}" target="_blank" title="Telegram">
-                                            <i class="fab fa-telegram-plane text-blue-500 text-2xl "></i>
+                                            <i class="fab fa-telegram-plane text-blue-500 text-3xl sm:text-2xl "></i>
                                         </a>
                                         <a href="https://www.reddit.com/submit?url={{ urlencode($postUrl) }}&title={{ urlencode($postTitle) }}" target="_blank" title="Reddit">
-                                            <i class="fab fa-reddit-alien text-orange-600 text-2xl "></i>
+                                            <i class="fab fa-reddit-alien text-orange-600 text-3xl sm:text-2xl "></i>
                                         </a>
                                     </div>
                                 </div>

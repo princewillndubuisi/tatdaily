@@ -4,6 +4,24 @@
     Home
 @endsection
 
+@foreach ($post as $posts)
+    @php
+        $postUrl = route('read.post', $posts->id);
+        $postTitle = $posts->title;
+        $postImage = asset($posts->image ?? 'default.jpg'); 
+    @endphp
+
+    <!-- Now you can safely use $postTitle, $postImage, etc. -->
+
+    @push('meta')
+        <meta property="og:title" content="{{ $postTitle }}" />
+        <meta property="og:description" content="{{ Str::limit(strip_tags($posts->description), 150) }}" />
+        <meta property="og:image" content="{{ $postImage }}" />
+        <meta property="og:url" content="{{ $postUrl }}" />
+    @endpush
+@endforeach
+
+
 @section('content')
     {{-- Start main section --}}
     <main class="bg-prince h-full pt-52 sm:pt-0">
