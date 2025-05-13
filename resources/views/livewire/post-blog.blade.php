@@ -80,10 +80,10 @@
                             <div class="relative p-4 w-full  max-w-md max-h-[600px] ">
                                 <div class="relative bg-white rounded-lg shadow">
                                     <div class="flex justify-between items-center p-4 border-b rounded-t">
-                                        <h3 class="text-sm font-semibold text-gray-900 dark:text-black">Share This Post</h3>
+                                        <h3 class="text-xl font-semibold text-gray-900 dark:text-black sm:text-sm">Share This Post</h3>
                                         <button type="button" class="text-gray-400 hover:text-gray-900"
                                             data-modal-hide="share-modal-{{ $posts->id }}">
-                                            <i class="fas fa-times"></i>
+                                            <i class="fas fa-times text-xl sm:text-sm"></i>
                                         </button>
                                     </div>
                                     @php
