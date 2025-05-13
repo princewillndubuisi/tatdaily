@@ -76,7 +76,7 @@
                         </div>
 
 
-                        <div id="share-modal-{{ $posts->id }}" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full inset-0 h-[calc(100%-1rem)] max-h-full bg-opacity-30">
+                        <div id="share-modal-{{ $posts->id }}" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full inset-0 h-[calc(100%-1rem)] max-h-full  bg-opacity-30">
                             <div class="relative p-4 w-full max-w-md max-h-[600px]">
                                 <div class="relative bg-white rounded-lg shadow border border-yellow-500">
                                     <div class="flex justify-between items-center p-4 border-b rounded-t">
@@ -89,52 +89,33 @@
                                     @php
                                         $postUrl = route('read.post', $posts->id);
                                         $postTitle = $posts->title;
-                                        $postImage = isset($posts->image) ? url(asset('storage/' . $posts->image)) : null;
-                                        // Make sure to use absolute URL for the image when sharing
+                                        $postImage = $posts->image ?? null; 
                                     @endphp
                                     
+                                    <meta property="og:title" content="{{ $postTitle }}" />
+                                    <meta property="og:description" content="{{ Str::limit(strip_tags($posts->description), 150) }}" />
+                                    <meta property="og:image" content="{{ $postImage }}" />
+                                    <meta property="og:url" content="{{ $postUrl }}" />
+
                                     <div class="p-4 flex gap-4 justify-evenly">
-                                        <!-- Facebook (supports image sharing) -->
-                                        <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode($postUrl) }}&picture={{ urlencode($postImage) }}&title={{ urlencode($postTitle) }}" target="_blank" title="Facebook">
+                                        <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode($postUrl) }}" target="_blank" title="Facebook">
                                             <i class="fab fa-facebook-f text-blue-600 text-2xl"></i>
                                         </a>
-                                        
-                                        <!-- Twitter (supports text + URL) -->
                                         <a href="https://twitter.com/intent/tweet?url={{ urlencode($postUrl) }}&text={{ urlencode($postTitle) }}" target="_blank" title="Twitter">
-                                            <i class="fab fa-twitter text-blue-400 text-2xl"></i>
+                                            <i class="fab fa-twitter text-blue-400 text-2xl "></i>
                                         </a>
-                                        
-                                        <!-- LinkedIn (supports title + summary + image) -->
-                                        <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ urlencode($postUrl) }}&title={{ urlencode($postTitle) }}&summary={{ urlencode($postTitle) }}&source={{ urlencode(config('app.name')) }}" target="_blank" title="LinkedIn">
-                                            <i class="fab fa-linkedin-in text-blue-700 text-2xl"></i>
+                                        <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ urlencode($postUrl) }}&title={{ urlencode($postTitle) }}" target="_blank" title="LinkedIn">
+                                            <i class="fab fa-linkedin-in text-blue-700 text-2xl "></i>
                                         </a>
-                                        
-                                        <!-- Pinterest (image-focused sharing) -->
-                                        @if($postImage)
-                                        <a href="https://pinterest.com/pin/create/button/?url={{ urlencode($postUrl) }}&media={{ urlencode($postImage) }}&description={{ urlencode($postTitle) }}" target="_blank" title="Pinterest">
-                                            <i class="fab fa-pinterest text-red-600 text-2xl"></i>
-                                        </a>
-                                        @endif
-                                        
-                                        <!-- WhatsApp -->
                                         <a href="https://api.whatsapp.com/send?text={{ urlencode($postTitle . ' ' . $postUrl) }}" target="_blank" title="WhatsApp">
-                                            <i class="fab fa-whatsapp text-green-500 text-2xl"></i>
+                                            <i class="fab fa-whatsapp text-green-500 text-2xl "></i>
                                         </a>
-                                        
-                                        <!-- Telegram -->
                                         <a href="https://t.me/share/url?url={{ urlencode($postUrl) }}&text={{ urlencode($postTitle) }}" target="_blank" title="Telegram">
-                                            <i class="fab fa-telegram-plane text-blue-500 text-2xl"></i>
+                                            <i class="fab fa-telegram-plane text-blue-500 text-2xl "></i>
                                         </a>
-                        </div>
-                                    
-                                    <!-- Preview of what will be shared -->
-                                    <div class="p-4 border-t bg-gray-50">
-                                        <p class="text-xs text-gray-500 mb-2">Preview:</p>
-                                        @if($postImage)
-                                        <img src="{{ $postImage }}" alt="{{ $postTitle }}" class="w-full h-auto mb-2 rounded">
-                                        @endif
-                                        <p class="text-sm font-medium text-gray-900">{{ $postTitle }}</p>
-                                        <p class="text-xs text-gray-500 mt-1">{{ $postUrl }}</p>
+                                        <a href="https://www.reddit.com/submit?url={{ urlencode($postUrl) }}&title={{ urlencode($postTitle) }}" target="_blank" title="Reddit">
+                                            <i class="fab fa-reddit-alien text-orange-600 text-2xl "></i>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
