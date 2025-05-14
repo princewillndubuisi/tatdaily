@@ -6,30 +6,9 @@
 
 @section('content')
     <style>
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-5px); }
-            100% { transform: translateY(0px); }
-        }
 
         .animate-float {
             animation: float 6s ease-in-out infinite;
-        }
-
-        .post-card {
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
-            background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
-        }
-
-        .post-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.04), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
         }
 
         .gradient-text {
@@ -85,6 +64,8 @@
             height: 1px;
             background: linear-gradient(90deg, transparent 0%, rgba(59, 130, 246, 0.3) 50%, transparent 100%);
         }
+
+        
     </style>
 
     <div class="max-w-7xl mx-auto px-4 pt-52 sm:px-6 lg:px-8 sm:py-12">
@@ -111,12 +92,9 @@
                     $relativeTime = $date->diffForHumans();
                 @endphp
 
-                <div class="post-card rounded-2xl overflow-hidden border border-gray-100 hover:border-transparent"
-                    style="animation: fadeIn 0.6s ease-out {{ $loop->index * 0.1 }}s both;">
+                <div class="post-card rounded-2xl overflow-hidden border border-gray-100 hover:border-transparent hover:shadow-lg transition-all duration-200 ease-in-out">
 
-                    <!-- Media + Content Container -->
                     <div class="flex flex-col md:flex-row">
-                        <!-- Media Section -->
                         <div class="w-full md:w-2/5 h-64 relative overflow-hidden">
                             @if ($posts->image)
                                 <img src="{{ $posts->image }}" alt="{{ $posts->title }}"
@@ -136,9 +114,9 @@
                             @endif
                         </div>
 
-                        <!-- Content Section -->
+                        
                         <div class="w-full md:w-3/5 p-6 md:p-8 flex flex-col justify-between">
-                            <!-- Header Info -->
+                            
                             <div class="mb-4">
                                 <div class="flex items-center justify-between mb-4">
                                     <div class="flex items-center space-x-3">
@@ -156,7 +134,7 @@
                                     </div>
                                 </div>
 
-                                <!-- Title + Description -->
+                               
                                 <a href="{{ route('read.post', $posts->id) }}" class="block group">
                                     <h3 class="text-3xl font-bold text-gray-900 mb-3 title-underline inline-block">
                                         {{ \Illuminate\Support\Str::limit($posts->title, 80) }}
@@ -167,7 +145,7 @@
                                 </a>
                             </div>
 
-                            <!-- Footer Actions -->
+                           
                             <div class="flex items-center justify-between pt-4 border-t border-gray-100">
                                 <div class="flex space-x-4 text-sm text-gray-500">
                                     <span class="flex items-center space-x-1 hover:text-blue-500 transition-colors">
@@ -183,10 +161,51 @@
                                     </span>
                                 </div>
                                 <div class="">
-                                    <button onclick="sharePost('{{ $posts->id }}', '{{ $posts->title }}', '{{ asset('storage/' . $posts->image) }}')"
-                                    class="p-2 rounded-full hover:bg-gray-100 transition-colors text-gray-500 hover:text-blue-500">
+                                    <button data-modal-target="share-modal-{{ $posts->id }}" data-modal-toggle="share-modal-{{ $posts->id }}"
+                                        class="p-2 rounded-full hover:bg-gray-100 transition-colors text-gray-500 hover:text-blue-500">
                                         <i class="fas fa-share-alt"></i>
                                     </button>
+                                </div>
+
+                                <div id="share-modal-{{ $posts->id }}" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full inset-0 h-[calc(100%-1rem)] max-h-full  bg-opacity-30">
+                                    <div class="relative p-4 w-full  max-w-md max-h-[600px] ">
+                                        <div class="relative bg-white rounded-lg shadow">
+                                            <div class="flex justify-between items-center p-4 border-b rounded-t">
+                                                <h3 class="text-xl font-semibold text-gray-900 dark:text-black sm:text-sm">Share This Post</h3>
+                                                <button type="button" class="text-gray-400 hover:text-gray-900"
+                                                    data-modal-hide="share-modal-{{ $posts->id }}">
+                                                    <i class="fas fa-times text-xl sm:text-sm"></i>
+                                                </button>
+                                            </div>
+                                            @php
+                                                $postUrl = route('read.post', $posts->id);
+                                                $postTitle = $posts->title;
+                                                $postImage = $posts->image ?? null; 
+                                            @endphp
+                                            
+
+                                            <div class="p-4 flex gap-4 justify-evenly min-h-[100px] sm:min-h-auto">
+                                                <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode($postUrl) }}" target="_blank" title="Facebook">
+                                                    <i class="fab fa-facebook-f text-blue-600 text-4xl sm:text-2xl"></i>
+                                                </a>
+                                                <a href="https://twitter.com/intent/tweet?url={{ urlencode($postUrl) }}&text={{ urlencode($postTitle) }}" target="_blank" title="Twitter">
+                                                    <i class="fab fa-twitter text-blue-400 text-4xl sm:text-2xl "></i>
+                                                </a>
+                                                <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ urlencode($postUrl) }}&title={{ urlencode($postTitle) }}" target="_blank" title="LinkedIn">
+                                                    <i class="fab fa-linkedin-in text-blue-700 text-4xl sm:text-2xl "></i>
+                                                </a>
+                                                <a href="https://api.whatsapp.com/send?text={{ urlencode($postTitle . ' ' . $postUrl) }}" target="_blank" title="WhatsApp">
+                                                    <i class="fab fa-whatsapp text-green-500 text-4xl sm:text-2xl "></i>
+                                                </a>
+                                                <a href="https://t.me/share/url?url={{ urlencode($postUrl) }}&text={{ urlencode($postTitle) }}" target="_blank" title="Telegram">
+                                                    <i class="fab fa-telegram-plane text-blue-500 text-4xl sm:text-2xl "></i>
+                                                </a>
+                                                <a href="https://www.reddit.com/submit?url={{ urlencode($postUrl) }}&title={{ urlencode($postTitle) }}" target="_blank" title="Reddit">
+                                                    <i class="fab fa-reddit-alien text-orange-600 text-4xl sm:text-2xl "></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -199,28 +218,10 @@
             @endforeach
         </div>
 
-        <!-- Pagination -->
+      
         <div class="mt-16">
             {{ $post->onEachSide(1)->links() }}
         </div>
     </div>
 
-
-    <script>
-        // Simple share function
-        function sharePost(postId, title, image) {
-            if (navigator.share) {
-                navigator.share({
-                    title: title,
-                    text: 'Check out this interesting post!',
-                    url: window.location.origin + '/read/post/' + postId,
-                })
-                .catch(error => console.log('Error sharing:', error));
-            } else {
-                // Fallback for browsers that don't support Web Share API
-                const shareUrl = window.location.origin + '/read/post/' + postId;
-                alert(`Share this post: ${title}\n${shareUrl}`);
-            }
-        }
-    </script>
 @endsection

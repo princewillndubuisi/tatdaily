@@ -70,9 +70,9 @@
                         </div>
 
                         <div class="flex items-center">
-                                <button data-modal-target="share-modal-{{ $posts->id }}" data-modal-toggle="share-modal-{{ $posts->id }}">
-                                    <i class="fas fa-share-alt text-[10px] sm:text-xs text-slate-500"></i>
-                                </button>
+                            <button data-modal-target="share-modal-{{ $posts->id }}" data-modal-toggle="share-modal-{{ $posts->id }}">
+                                <i class="fas fa-share-alt text-[10px] sm:text-xs text-slate-500"></i>
+                            </button>
                         </div>
 
 

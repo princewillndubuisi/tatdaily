@@ -95,12 +95,53 @@
                             <span class="text-gray-600 text-xl font-semibold ml-1">{{ $post->comments()->count() }}</span>
                         </div>
                         <div class="py-2 px-4">
-                            <a href="#"
-                                onclick="sharePost('{{ $post->id }}', '{{ $post->title }}', '{{ asset('storage/' . $post->image) }}')">
+                            <button data-modal-target="share-modal-{{ $post->id }}" data-modal-toggle="share-modal-{{ $post->id }}">
                                 <i class="fa-solid fa-share-nodes text-gray-600 text-3xl mr-5"></i>
                                 {{-- <span class="text-gray-600 text-xl font-semibold ml-1">10.0K </span> --}}
-                            </a>
+                            </button>
 
+
+                        </div>
+
+                        <div id="share-modal-{{ $post->id }}" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full inset-0 h-[calc(100%-1rem)] max-h-full  bg-opacity-30">
+                            <div class="relative p-4 w-full  max-w-md max-h-[600px] ">
+                                <div class="relative bg-white rounded-lg shadow">
+                                    <div class="flex justify-between items-center p-4 border-b rounded-t">
+                                        <h3 class="text-xl font-semibold text-gray-900 dark:text-black sm:text-sm">Share This Post</h3>
+                                        <button type="button" class="text-gray-400 hover:text-gray-900"
+                                            data-modal-hide="share-modal-{{ $post->id }}">
+                                            <i class="fas fa-times text-xl sm:text-sm"></i>
+                                        </button>
+                                    </div>
+                                    @php
+                                        $postUrl = route('read.post', $post->id);
+                                        $postTitle = $post->title;
+                                        $postImage = $post->image ?? null; 
+                                    @endphp
+                                    
+
+                                    <div class="p-4 flex gap-4 justify-evenly min-h-[100px] sm:min-h-auto">
+                                        <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode($postUrl) }}" target="_blank" title="Facebook">
+                                            <i class="fab fa-facebook-f text-blue-600 text-4xl sm:text-2xl"></i>
+                                        </a>
+                                        <a href="https://twitter.com/intent/tweet?url={{ urlencode($postUrl) }}&text={{ urlencode($postTitle) }}" target="_blank" title="Twitter">
+                                            <i class="fab fa-twitter text-blue-400 text-4xl sm:text-2xl "></i>
+                                        </a>
+                                        <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ urlencode($postUrl) }}&title={{ urlencode($postTitle) }}" target="_blank" title="LinkedIn">
+                                            <i class="fab fa-linkedin-in text-blue-700 text-4xl sm:text-2xl "></i>
+                                        </a>
+                                        <a href="https://api.whatsapp.com/send?text={{ urlencode($postTitle . ' ' . $postUrl) }}" target="_blank" title="WhatsApp">
+                                            <i class="fab fa-whatsapp text-green-500 text-4xl sm:text-2xl "></i>
+                                        </a>
+                                        <a href="https://t.me/share/url?url={{ urlencode($postUrl) }}&text={{ urlencode($postTitle) }}" target="_blank" title="Telegram">
+                                            <i class="fab fa-telegram-plane text-blue-500 text-4xl sm:text-2xl "></i>
+                                        </a>
+                                        <a href="https://www.reddit.com/submit?url={{ urlencode($postUrl) }}&title={{ urlencode($postTitle) }}" target="_blank" title="Reddit">
+                                            <i class="fab fa-reddit-alien text-orange-600 text-4xl sm:text-2xl "></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
